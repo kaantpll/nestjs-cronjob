@@ -5,10 +5,10 @@ export class Student {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'name', type: 'varchar', length: 255 })
+  @Column({ name: 'firstName', type: 'varchar', length: 255 })
   firstName: string;
 
-  @Column({ name: 'name', type: 'varchar', length: 255 })
+  @Column({ name: 'lastName', type: 'varchar', length: 255 })
   lastName: string;
 
   @Column({ name: 'age', type: 'int' })

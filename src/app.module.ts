@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StudentsModule } from './student/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Student } from './student/student.entity';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal:true}),
+    ConfigModule.forRoot({ isGlobal: true }),
 
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -16,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [],
+        entities: [Student],
         synchronize: true, // don't use in production. you must use migration and sync should be false
       }),
     }),

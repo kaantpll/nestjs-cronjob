@@ -33,7 +33,7 @@ export class StudentsService {
     };
 
     //you can use save method too.However save method runs 2 times (select and create). Insert method is efficent more than save method
-    return await this.studentRepository.insert(student);
+    await this.studentRepository.insert(student);
   }
 
   async update(data: UpdateStudentType, params: GetOneParams) {

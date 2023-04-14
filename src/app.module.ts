@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { StudentsModule } from './student/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({isGlobal:true}),
+
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
@@ -17,6 +20,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true, // don't use in production. you must use migration and sync should be false
       }),
     }),
+
+    StudentsModule,
   ],
   controllers: [],
   providers: [],

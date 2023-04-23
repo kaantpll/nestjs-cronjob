@@ -8,11 +8,13 @@ import {
   UpdateStudentType,
 } from './types/student.type';
 import { ErrorMessages } from 'src/constants';
+import { TasksService } from 'src/tasks/tasks.service';
 
 @Injectable()
 export class StudentsService {
   constructor(
     @InjectRepository(Student) private studentRepository: Repository<Student>,
+    private tasksService : TasksService
   ) {}
 
   async getAll() {
